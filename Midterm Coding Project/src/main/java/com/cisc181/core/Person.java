@@ -89,8 +89,44 @@ public abstract class Person implements java.io.Serializable {
 	 */
 
 	public Person(String FirstName, String MiddleName, String LastName,
-			Date DOB, String Address, String Phone_number, String Email)
+			Date DOB, String Address, String Phone_number, String Email)throws PersonException
 	{
+		Calendar calendar  = Calendar.getInstance();
+		Date d1 = calendar.getTime();
+		
+		Calendar today = Calendar.getInstance();
+		Calendar birthDate = Calendar.getInstance();
+		birthDate.setTime(DOB);
+		if ((today.get(Calendar.YEAR) 
+				- birthDate.get(Calendar.YEAR)) > 100)
+		{
+			throw new PersonException();
+		}
+		
+	/*	if(DOB.compareTo(d1) < 0)
+		{
+			throw new PersonException();
+		}*/
+		
+		
+		
+		String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+		Pattern pattern = Pattern.compile(regex);
+		String email = "xxx@udel.edu";
+		Matcher matcher = pattern.matcher(email);
+		
+		
+		//REDO THIS PART IN ORDER FOR MORE POINTS
+		/*if(matcher.matches())
+	    {
+			System.out.println(matcher.replaceFirst("($1) $2-$3"));
+	    }
+		else if (!(matcher.matches()))
+		{
+			throw new PersonException();
+		}*/
+	
+
 		this.FirstName = FirstName;
 		this.MiddleName = MiddleName;
 		this.LastName = LastName;
