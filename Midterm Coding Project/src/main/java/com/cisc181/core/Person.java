@@ -119,22 +119,6 @@ public abstract class Person implements java.io.Serializable {
 		       throw new PersonException();
 		    }
 		}
-		
-		/*String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-		Pattern pattern = Pattern.compile(regex);
-		//String email = "xxx@udel.edu";
-		Matcher matcher = pattern.matcher(Phone_number);
-		
-		
-		//REDO THIS PART IN ORDER FOR MORE POINTS
-		if(matcher.matches())
-	    {
-			//System.out.println(matcher.replaceFirst("($1) $2-$3"));
-	    }
-		else if (!(matcher.matches()))
-		{
-			throw new PersonException();
-		}*/
 	
 
 		this.FirstName = FirstName;
