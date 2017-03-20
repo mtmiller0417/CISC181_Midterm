@@ -4,9 +4,13 @@ import static org.junit.Assert.*;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.cisc181.eNums.eMajor;
 import com.cisc181.eNums.eTitle;
 
 public class Staff_Test {
@@ -15,10 +19,40 @@ public class Staff_Test {
 	public static void setup() {
 	}
 	
-	@Test
-	public void test() {
-		assertEquals(1,1);
+	@Test(expected = PersonException.class)//Test PersonException for bad Phone Number
+	public void phoneNumberExceptiontest() throws PersonException 
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(0);
+		cal.set(2000, 04, 19, 7, 35, 9);
+		java.util.Date date2 = cal.getTime();
+		Date DOB = date2;
+		Student student = new Student("Matthew", "T", "Miller", DOB,eMajor.COMPSI, "Address","123", "xxx@udel.edu" );
 	}	
+	
+	@Test(expected = PersonException.class)//Test PersonException for bad birthday
+	public void bdayExceptiontest() throws PersonException 
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(0);
+		cal.set(1700, 04, 19, 7, 35, 9);
+		java.util.Date date2 = cal.getTime();
+		Date DOB = date2;
+		Student student = new Student("Matthew", "T", "Miller", DOB,eMajor.COMPSI, "Address","3021234567", "xxx@udel.edu" );
+	}	
+	
+	
+	@Test//Test PersonException for Correct Phone Number and DOB(No error expected)
+	public void noErrorTest() throws PersonException 
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(0);
+		cal.set(2000, 04, 19, 7, 35, 9);
+		java.util.Date date2 = cal.getTime();
+		Date DOB = date2;
+		Student student = new Student("Matthew", "T", "Miller", DOB,eMajor.COMPSI, "Address","3021324987", "xxx@udel.edu" );
+	}	
+	
 
 	@Test
 	public void StaffTest() throws PersonException

@@ -1,5 +1,6 @@
 package com.cisc181.core;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -102,24 +103,33 @@ public abstract class Person implements java.io.Serializable {
 		{
 			throw new PersonException();
 		}
-		
-	/*	if(DOB.compareTo(d1) < 0)
-		{
-			throw new PersonException();
-		}*/
-		
-		
-		
+		ArrayList<String> phoneNumbers = new ArrayList<String>();
+		phoneNumbers.add(Phone_number);
 		String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+		 
 		Pattern pattern = Pattern.compile(regex);
-		String email = "xxx@udel.edu";
-		Matcher matcher = pattern.matcher(email);
+		 
+		for(String email : phoneNumbers)
+		{
+		    Matcher matcher = pattern.matcher(email);
+		    //System.out.println(email +" : "+ matcher.matches());
+		    //If phone number is correct then format it to (123)-456-7890
+		    if(!(matcher.matches()))
+		    {
+		       throw new PersonException();
+		    }
+		}
+		
+		/*String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+		Pattern pattern = Pattern.compile(regex);
+		//String email = "xxx@udel.edu";
+		Matcher matcher = pattern.matcher(Phone_number);
 		
 		
 		//REDO THIS PART IN ORDER FOR MORE POINTS
-		/*if(matcher.matches())
+		if(matcher.matches())
 	    {
-			System.out.println(matcher.replaceFirst("($1) $2-$3"));
+			//System.out.println(matcher.replaceFirst("($1) $2-$3"));
 	    }
 		else if (!(matcher.matches()))
 		{

@@ -96,7 +96,6 @@ public class Student_Test {
 		studentList.add(student4);studentList.add(student5);studentList.add(student6);
 		studentList.add(student7);studentList.add(student8);studentList.add(student9);
 		studentList.add(student10);
-		//test(studentList, secList, semList, cList);
 		
 		
 	}
